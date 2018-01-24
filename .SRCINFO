@@ -1,6 +1,6 @@
 pkgbase = kovri-git
 	pkgdesc = A free, decentralized, anonymity technology based on I2P's open specifications
-	pkgver = 3798.99f55005
+	pkgver = 3808.b1d505b2
 	pkgrel = 1
 	url = https://getkovri.org/
 	arch = i686
