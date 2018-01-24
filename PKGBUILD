@@ -1,7 +1,7 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 _name=kovri
 pkgname=${_name}-git
-pkgver=3798.99f55005
+pkgver=3808.b1d505b2
 pkgrel=1
 pkgdesc="A free, decentralized, anonymity technology based on I2P's open specifications"
 arch=('i686' 'x86_64')
@@ -34,7 +34,10 @@ build(){
 package() {
 	cd ${srcdir}/${_name}
 	install -Dm755 build/${_name} ${pkgdir}/usr/bin/${_name}
-	install -Dm755 build/${_name}-util ${pkgdir}/usr/bin/${_name}-util
+	#install -Dm755 build/${_name}-util ${pkgdir}/usr/bin/${_name}-util
+	mkdir -p ${pkgdir}/usr/lib/
+	install -Dm755 deps/cpp-netlib/build/libs/network/src/lib*.so* ${pkgdir}/usr/lib/
+	install -Dm755 deps/cryptopp/lib*.so* ${pkgdir}/usr/lib/
 	install -d ${pkgdir}/usr/share/${_name}
 	cp -a pkg/* ${pkgdir}/usr/share/${_name}/
 }
