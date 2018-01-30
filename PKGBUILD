@@ -1,10 +1,11 @@
-# Maintainer: Michał Sałaban <michal@salaban.info>
+# Maintainer: neozaru
+# Original maintainer: Michał Sałaban <michal@salaban.info>
 _name=kovri
-pkgname=${_name}-git
-pkgver=3808.b1d505b2
+pkgname=${_name}-git-generic
+pkgver=3817.d6a48512
 pkgrel=1
 pkgdesc="A free, decentralized, anonymity technology based on I2P's open specifications"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://getkovri.org/"
 license=('BSD')
 depends=('boost' 'openssl')
@@ -28,6 +29,8 @@ build(){
 	git config submodule.deps/cryptopp.url ${srcdir}/cryptopp
 	git config submodule.docs.url ${srcdir}/kovri-docs
 	git submodule update -f
+	# TODO: hack
+	sed -i 's/-march=native/-march=x86-64/g' ${srcdir}/${_name}/Makefile
 	make
 }
 
